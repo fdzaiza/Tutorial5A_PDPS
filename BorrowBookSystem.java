@@ -3,9 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-// ============ MAIN MENU ============
 public class BorrowBookSystem extends JFrame {
-    // lists to keep all student and book objects
     static ArrayList<Student> studentList = new ArrayList<Student>();
     static ArrayList<Book> bookList = new ArrayList<Book>();
 
@@ -55,12 +53,11 @@ public class BorrowBookSystem extends JFrame {
         BorrowBookSystem frame = new BorrowBookSystem();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Main Menu");
-        frame.setSize(300, 250);
+        frame.setSize(400, 250);
         frame.setVisible(true);
     }
 }
 
-// ============ STUDENT CLASS ============
 class Student {
     private String name;
     private String matric;
@@ -83,7 +80,6 @@ class Student {
     }
 }
 
-// ============ BOOK CLASS ============
 class Book {
     private String title;
     private String author;
@@ -111,7 +107,6 @@ class Book {
     }
 }
 
-// ============ ADD STUDENT INFO ============
 class AddStudentFrame extends JFrame {
     private JLabel label1;
     private JLabel label2;
@@ -160,8 +155,7 @@ class AddStudentFrame extends JFrame {
 
         pane.add(p3, BorderLayout.NORTH);
         pane.add(p4, BorderLayout.CENTER);
-
-        // Add button: create a Student object and save it
+        
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Student s = new Student(textField1.getText(), textField2.getText());
@@ -171,7 +165,6 @@ class AddStudentFrame extends JFrame {
             }
         });
 
-        // List button: show all students
         btnList.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textArea1.setText("");
@@ -183,7 +176,6 @@ class AddStudentFrame extends JFrame {
     }
 }
 
-// ============ ADD BOOK INFO ============
 class AddBookFrame extends JFrame {
     private JLabel label1;
     private JLabel label2;
@@ -233,7 +225,6 @@ class AddBookFrame extends JFrame {
         pane.add(p3, BorderLayout.NORTH);
         pane.add(p4, BorderLayout.CENTER);
 
-        // Add button: create a Book object and save it
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Book b = new Book(textField1.getText(), textField2.getText());
@@ -243,7 +234,6 @@ class AddBookFrame extends JFrame {
             }
         });
 
-        // List button: show all books
         btnList.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textArea1.setText("");
@@ -256,7 +246,6 @@ class AddBookFrame extends JFrame {
     }
 }
 
-// ============ BORROW BOOK ============
 class BorrowBookFrame extends JFrame {
     private JLabel label1;
     private JLabel label2;
@@ -286,7 +275,6 @@ class BorrowBookFrame extends JFrame {
         comboBook = new JComboBox<Book>();
         btnBorrow = new JButton("Borrow");
 
-        // put the saved objects into the combo boxes
         for (Student s : BorrowBookSystem.studentList) {
             comboStudent.addItem(s);
         }
@@ -308,7 +296,6 @@ class BorrowBookFrame extends JFrame {
         pane.add(p2, BorderLayout.CENTER);
         pane.add(p3, BorderLayout.SOUTH);
 
-        // Borrow button: show the borrow message
         btnBorrow.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Student s = (Student) comboStudent.getSelectedItem();
